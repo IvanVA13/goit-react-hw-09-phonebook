@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/LogInComponent/LogInComponent.module.scss"],"names":[],"mappings":"AAAA,4BACE,WAAY,CACZ,iBAAkB,CAClB,gBAAiB,CACjB,gBAAiB","file":"login-page.503578bb.chunk.css","sourcesContent":[".form {\r\n  width: 600px;\r\n  margin-right: auto;\r\n  margin-left: auto;\r\n  padding-top: 30px;\r\n}\r\n"]}
