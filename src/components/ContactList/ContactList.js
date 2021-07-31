@@ -4,8 +4,8 @@ import { Button, Card } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  delContact,
-  fetchContacts,
+  delContactTest,
+  fetchContactsTest,
   getVisibleContacts,
 } from '../../redux/contacts';
 import styles from './ContactList.module.scss';
@@ -14,11 +14,11 @@ const ContactList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContactsTest());
   }, [dispatch]);
 
   const handleDelContact = useCallback(
-    id => () => dispatch(delContact(id)),
+    id => () => dispatch(delContactTest(id)),
     [dispatch],
   );
   return (

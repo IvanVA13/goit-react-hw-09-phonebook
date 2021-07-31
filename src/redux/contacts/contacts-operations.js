@@ -1,51 +1,22 @@
 import axios from 'axios';
-import {
-  addContactError,
-  addContactRequest,
-  addContactSuccess,
-  delContactError,
-  delContactRequest,
-  delContactSuccess,
-  fetchContactError,
-  fetchContactRequest,
-  fetchContactSuccess,
-} from './contacts-actions';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const addContact = (name, number) => async dispatch => {
-  const contact = {
-    name,
-    number,
-  };
-  dispatch(addContactRequest());
-
-  try {
+export const addContactTest = createAsyncThunk(
+  'contacts/addContact',
+  async contact => {
     const { data } = await axios.post('/contacts', contact);
-    dispatch(addContactSuccess(data));
-  } catch (error) {
-    dispatch(addContactError(error));
-  }
-};
+    return data;
+  },
+);
 
-export const delContact = id => dispatch => {
-  dispatch(delContactRequest());
+export const delContactTest = createAsyncThunk('contacts/delContact', id => {
+  axios.delete(`/contacts/${id}`);
+  return id;
+});
 
-  try {
-    axios.delete(`/contacts/${id}`);
-    dispatch(delContactSuccess(id));
-  } catch (error) {
-    dispatch(delContactError(error));
-  }
-};
-
-export const fetchContacts = () => async dispatch => {
-  dispatch(fetchContactRequest());
-
-  try {
-    const { data } = await axios.get('/contacts');
-    dispatch(fetchContactSuccess(data));
-  } catch (error) {
-    dispatch(fetchContactError(error));
-  }
-};
+export const fetchContactsTest = createAsyncThunk('fetchContact', async () => {
+  const { data } = await axios.get('/contacts');
+  return data;
+});

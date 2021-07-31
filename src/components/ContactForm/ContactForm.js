@@ -3,7 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addContact, getItems } from '../../redux/contacts';
+import { getItems, addContactTest } from '../../redux/contacts';
 import styles from './ContactForm.module.scss';
 
 import React from 'react';
@@ -35,7 +35,8 @@ const ContactForm = () => {
 
     contacts.find(contact => contact.name === name)
       ? alert(`${name} is already in contacts`)
-      : dispatch(addContact(name, number));
+      : // : dispatch(addContact(name, number));
+        dispatch(addContactTest({ name, number }));
     reset();
   };
 
